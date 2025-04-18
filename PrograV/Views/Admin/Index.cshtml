@@ -1,0 +1,215 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Pagina Main Admin</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/HTML5UP/assets/css/main.css" />
+</head>
+<body class="subpage">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<!-- Logo -->
+						<h1><a href="index.html" id="logo">Admin Page</a></h1>
+
+						<!-- Nav -->
+						<nav id="nav">
+							<a asp-action="Index" asp-controller="admin">Homepage</a>
+							<a asp-action="Index" asp-controller="condo">Ver Condominio</a>
+							<a asp-action="Createowner" asp-controller="admin">Registrar Propietario</a>
+							<a asp-action="Createofficer" asp-controller="admin">Registra Seguridad</a>
+							<a asp-action="index" asp-controller="Welcome">LogOut</a>
+						</nav>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Content -->
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-3 col-12-medium">
+
+						<!-- Left Sidebar -->
+						<section>
+							<header>
+								<h2>Funciones</h2>
+							</header>
+							<p> si es el admin index
+								Permite al administrados del sitio crear u alterar propietarios, guardas de seguridad asi como agregar mas condominios a la jurisdicion de la entidad. 
+							</p>
+							<ul class="link-list">
+								<li>
+									<a asp-action="Index" asp-controller="Condo">Ver lista de Condominios</a>
+								<li>
+									<a asp-action="ManageOwner" asp-controller="Admin">Ver lista de usuarios</a>
+								</li>
+								<li><a href="#">Ver lista de guardas de seguridad</a></li>
+								@* <li><a href="#">Nascetur ridiculus</a></li> *@
+							</ul>
+						</section>
+						<section>
+							<header>
+								<h2>Agregar nuevos</h2>
+							</header>
+							<ul class="link-list">
+								<li>
+									<a asp-action="Create" asp-controller="Condo">Agregar Condominio</a>
+								<li>
+									<a asp-action="ManageOwner" asp-controller="Admin">Agregar propietario</a>
+								</li>
+								<li>
+									<a asp-action="" asp-controller="">Agregar Oficial de Seguridad</a>
+								</li>
+								<@* li><a href="#">Penatibus et magnis</a></li>
+								<li><a href="#">Dis parturient montes</a></li>
+								<li><a href="#">Nascetur ridiculus</a></li> *@
+							</ul>
+						</section>
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+
+						<!-- Main Content -->
+						<section>
+							<header>
+								<h2>Bienvenido Admin</h2>
+								<h3>Pagina principal de administracion de recurdos</h3>
+							</header>
+							<p>
+								Favor agregar aqui cualquier tipo de informacion importante pertinente a la administracion de recursos. 
+							</p>
+							<p>
+								Perfil de prueba para posible visualizacion de imagenes.
+							</p>
+
+
+						</section>
+
+					</div>
+					<div class="col-3 col-12-medium">
+
+						<!-- Right Sidebar -->
+						<section>
+							<header>
+								<h2>Seccion de actulizacion</h2>
+							</header>
+							<ul class="link-list">
+								<li><a href="#">Actualizar Condominio</a></li>
+								<li><a asp-action="ManageOwner" asp-controller="Admin">Getionar propietario</a></li>
+								@* <li>
+									<a asp-action="AddPropertytoOwner" asp-controller="Admin">Agregar Propiedades</a>
+								</li> *@
+								<li><a asp-action="ManageOfficer" asp-controller="Admin">Getionar seguridad</a></li>
+								@* <li><a href="#">Penatibus et magnis</a></li>
+								<li><a href="#">Dis parturient montes</a></li>
+								<li><a href="#">Nascetur ridiculus</a></li> *@
+							</ul>
+						</section>
+						<section>
+							<header>
+								<h2>Seccion para opciones varias</h2>
+							</header>
+							<p>
+								Principalmente para posibles adiciones futuras. 
+							</p>
+							<ul class="link-list">
+								<li><a href="#">Borrar condomindio?</a></li>
+								<li><a href="#">Elimiar Propietario?</a></li>
+								<li><a href="#">Eliminar Seguridad?</a></li>
+								@* <li><a href="#">Nascetur ridiculus</a></li> *@
+							</ul>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-8 col-12-medium">
+
+						<!-- Links -->
+						<section>
+							<h2>Links to Important Stuff</h2>
+							<div>
+								<div class="row">
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">Registrar Propietarios</a></li>
+											<li><a href="#">Gestionar Pagos</a></li>
+											<li><a href="#">Reservar Áreas Comunes</a></li>
+											<li><a href="#">Notificaciones a Residentes</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">Reportar Incidencias</a></li>
+											<li><a href="#">Consultar Estados de Cuenta</a></li>
+											<li><a href="#">Actualizar Información</a></li>
+											<li><a href="#">Acceso al Manual del Condominio</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">Control de Visitantes</a></li>
+											<li><a href="#">Historial de Incidencias</a></li>
+											<li><a href="#">Planificación de Reuniones</a></li>
+											<li><a href="#">Enviar Comunicados</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">Facturación Electrónica</a></li>
+											<li><a href="#">Auditorías Internas</a></li>
+											<li><a href="#">Estadísticas y Reportes</a></li>
+											<li><a href="#">Configuración General</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+					<div class="col-4 col-12-medium imp-medium">
+
+						<!-- Blurb -->
+						<section>
+							<h2>An Informative Text Blurb</h2>
+							<p>
+								Espacio para agregar mas informacion que talvez el adimin pueda utilizar
+							</p>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="/HTML5UP/assets/js/jquery.min.js"></script>
+	<script src="/HTML5UP/assets/js/browser.min.js"></script>
+	<script src="/HTML5UP/assets/js/breakpoints.min.js"></script>
+	<script src="/HTML5UP/assets/js/util.js"></script>
+	<script src="/HTML5UP/assets/js/main.js"></script>
+
+</body>
+</html>

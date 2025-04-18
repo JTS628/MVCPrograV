@@ -1,7 +1,9 @@
 ﻿using Firebase.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PrograV.Firebase;
+using PrograV.Models;
 
 namespace PrograV.Controllers
 {
@@ -17,14 +19,44 @@ namespace PrograV.Controllers
         {
             try
             {
+                UserHelper userHelper = new UserHelper();
+
                 UserCredential userCredential = await FirebaseAuthHelper.setFirebaseAuthClient().SignInWithEmailAndPasswordAsync(email, password);
-                return RedirectToAction("index", "home");
+                UserModel user = await userHelper.getUser(email);
+
+                HttpContext.Session.SetString("userSession",JsonConvert.SerializeObject(user));
+
+                if (user.type.Equals("admin"))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                if (user.type.Equals("owner"))
+                {
+                    return RedirectToAction("Index", "Owner");
+                }
+
+                if (user.type.Equals("officer"))
+                {
+                    return RedirectToAction("Index", "Security");
+                }
+
+                return RedirectToAction("Error", "home");
+
             }
             catch
             { 
             return RedirectToAction ("Error","home");
             }
         }
+
+        public IActionResult LogOut(int id)
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Welcome");
+        }
+
+
         // GET: LoginController/Details/5
         public IActionResult Details(int id)
         {

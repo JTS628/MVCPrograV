@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Agregar propietrio";
+}
+
+<div class="text-center">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mt-5">@ViewData["Title"]</h2>
+                    <form method="post" asp-action="Registerowner" asp-controller="Admin">
+                        <div class="form-group">
+                            <label for="txtname">Nombre del Propietario</label>
+                            <input type="text" class="form-control" id="txtname" name="txtname"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtemail">Email</label>
+                            <input type="email" class="form-control" id="txtemail" name="txtemail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtcondo" class="control-label">Condominium </label>
+                            <select id="txtcondo" name="txtcondo" class="form-control">
+                                <option value="">Seleccione un condominio</option>
+                                @if (ViewBag.condo != null)
+                                {
+                                    foreach (var condo in ViewBag.condo)
+                                    {
+                                        <option value="@condo.Name" data-count="@condo.Count">@condo.Name</option>
+
+                                        @* <p>Condo: @condo.Name, Count: @condo.Count</p>
+                                        <option value="@condo.Name">@condo.Name</option> *@
+                                    }
+                                }
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="inthouse">House number</label>
+                            <input type="number" class="form-control" id="inthouse" name="inthouse" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary ">Agregar nuevo Propietario</button>
+                        </div>
+                       
+                    </form>
+                    <form class="text-center">
+                        
+                            <button asp-action="index" asp-controller="admin" type="submit" class="btn btn-primary ">Back</button>
+                                         
+                    </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+@* <script>
+    document.getElementById('txtcondo').addEventListener('change', function() {
+        var selectedCondo = this.options[this.selectedIndex];
+        var count = selectedCondo.getAttribute('data-count');
+        var minRange = 1; // Set your minimum range
+        var maxRange = count; // Set your maximum range
+
+        document.getElementById('inthouse').addEventListener('input', function() {
+            var input = this.value;
+
+            if (input == count) {
+                alert('This house number already exists.');
+                this.value = '';
+            } else if (input < minRange || input > maxRange) {
+                alert('House number must be between ' + minRange + ' and ' + maxRange + '.');
+                this.value = '';
+            }
+        });
+    });
+</script> *@
+
+</div>

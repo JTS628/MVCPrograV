@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Edit Officer Details";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">@ViewData["Title"]</h2>
+
+        <div class="mt-4">
+            <form asp-action="UpdateOfficer" asp-controller="Admin" method="post">
+                <div class="mb-3">
+                    <label for="uuid" class="form-label" hidden>UUID</label>
+                    <input type="text" id="uuid" name="uuid" class="form-control" value="@Model.uuid" required readonly hidden />
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Officer Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="OfficerName" value="@Model.name" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="Email" value="@Model.email" class="form-control" readonly />
+                    </div>
+                </div>
+
+             
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nombre Condo:</label>
+                                <select id="txtcondo" name="condo" class="form-control" required>
+                                    @if (ViewBag.listaCondo != null)
+                                    {
+                                        foreach (var condominium in ViewBag.listaCondo)
+                                        {
+                                            <option value="@condominium.Name">@condominium.Name</option>
+                                        }
+                                    }
+                                </select>
+
+
+                            </div>
+                        
+               
+
+                <button type="submit" class="btn btn-success mt-4">Guardar Cambios</button>
+                @* <a asp-action="AddPropertytoOwner" asp-controller="Admin" asp-route-email="@Model.email" 
+                                                                          asp-route-uuid="@Model.uuid" 
+                                                                          asp-route-name="@Model.name"
+                                                                          class="btn btn-warning btn-sm">Agregar Propiedad</a> *@
+                <a asp-action="ManageOfficer" asp-controller="Admin" asp-route-uuid="@Model.uuid" class="btn btn-secondary mt-4 ml-3">Regresar</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

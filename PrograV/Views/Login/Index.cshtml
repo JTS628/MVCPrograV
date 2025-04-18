@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Login Page";
 }
 
 <div class="text-center">
@@ -19,11 +19,11 @@
                     <form method="post" asp-action="Login" asp-controller="Login" >
                         <div class="form-group">
                             <label for="username">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" required>
+                            <input type="text" class="form-control" id="email" name="email" value="jamcrests@gmail.com" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" value="Admin$1234" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                     </form>
