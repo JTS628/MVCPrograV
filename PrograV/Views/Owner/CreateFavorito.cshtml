@@ -18,7 +18,7 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						@* <h1><a href="index.html" id="logo">Bienvenido @ViewBag.User.name</a></h1> *@
+						
 
 						<!-- Nav -->
 						<nav id="nav">
@@ -85,10 +85,6 @@
 										<input type="text" id="placa" name="Placa" placeholder="Placa del vehículo" required />
 									</div>
 
-									@* <div class="col-12">
-										<label for="fecha">Fecha de visita</label>
-										<input type="date" id="fecha" name="Fecha" required />
-									</div> *@
 
 									<div class="col-12">
 										<ul class="actions">
@@ -99,92 +95,10 @@
 								</div>
 							</form>
 						</section>
-
-
-
-						@* <section>
-						
-								<div class="container mt-5">
-									<h2 class="text-center">Registro de mis Favoritos</h2>
-									<form asp-action="Savefavorito" asp-controller="Owner" method="post">
-										<div class="mb-3">
-											<label for="nombre" class="form-label">Nombre</label>
-											<input type="text" class="form-control" id="nombre" name="Nombre" required>
-										</div>
-
-										<div class="mb-3">
-											<label for="cedula" class="form-label">Cédula</label>
-											<input type="number" class="form-control" id="cedula" name="Cedula" required>
-										</div>
-
-										<div class="mb-3">
-											<label for="marca" class="form-label">Marca del Vehículo</label>
-											<input type="text" class="form-control" id="marca" name="Marca" required>
-										</div>
-									<div class="mb-3">
-										<label for="modelo" class="form-label">Modelo</label>
-										<input type="text" class="form-control" id="modelo" name="Modelo" required>
-									</div>
-
-										<div class="mb-3">
-											<label for="color" class="form-label">Color</label>
-											<input type="text" class="form-control" id="color" name="Color" required>
-										</div>
-
-										<div class="mb-3">
-											<label for="placa" class="form-label">Placa</label>
-											<input type="text" class="form-control" id="placa" name="Placa" required>
-										</div>
-
-										<div class="mb-3">
-											<label for="fecha" class="form-label">Fecha de visita</label>
-											<input type="date" class="form-control" id="fecha" name="Fecha" required>
-										</div>
-
-										<button type="submit" class="btn btn-primary">Guardar</button>
-									</form>
-									<div class="text-end">
-									<a class="btn btn-primary" asp-action="Index" asp-controller="Owner" >Volver</a>
-									</div>
-
-								</div>
-							
-						</section> *@
+				
 
 					</div>
-					@* <div class="col-3 col-12-medium">
-
-						<!-- Sidebar -->
-						<section>
-							<header>
-								<h2>Magna Phasellus</h2>
-							</header>
-							<ul class="link-list">
-								<li><a href="#">Sed dolore viverra</a></li>
-								<li><a href="#">Ligula non varius</a></li>
-								<li><a href="#">Nec sociis natoque</a></li>
-								<li><a href="#">Penatibus et magnis</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li>
-							</ul>
-						</section>
-						<section>
-							<header>
-								<h2>Ipsum Dolor</h2>
-							</header>
-							<p>
-								Vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-								iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat.
-							</p>
-							<ul class="link-list">
-								<li><a href="#">Sed dolore viverra</a></li>
-								<li><a href="#">Ligula non varius</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li>
-							</ul>
-						</section>
-
-					</div>*@
+					
 				</div>
 			</div>
 		</section> 

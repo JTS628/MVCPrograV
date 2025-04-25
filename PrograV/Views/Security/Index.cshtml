@@ -41,11 +41,9 @@
 							<a  href="@Url.Action("Index","Security")">Homepage</a>
 							
 							<a asp-action="OfficerCreateVisit" asp-controller="Security">Crear Visitas</a>
-							@*<a href="twocolumn1.html">Two Column #1</a>
-							<a href="twocolumn2.html">Two Column #2</a> *@
-							@* <div style="text-align: end"> *@
+							
 							<a asp-action="Logout" asp-controller="Login">LogOut</a>
-							@* </div> *@
+							
 						</nav>
 
 					</div>
@@ -75,19 +73,13 @@
 										{
 											<option value="@condo.Name" data-count="@condo.Count">@condo.Name</option>
 
-											@* <p>Condo: @condo.Name, Count: @condo.Count</p>
-											 <option value="@condo.Name">@condo.Name</option> *@
+											
 										}
 									}
 								</select>
 							</div>
 							<ul class="link-list">
-									@*<li><a asp-action="OfficerCreateVisit" asp-controller="Security">Crear Visitas</a></li>
-								 <li><a href="#">Ligula non varius</a></li>
-								<li><a href="#">Nec sociis natoque</a></li>
-								<li><a href="#">Penatibus et magnis</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li> *@
+									
 							</ul>
 						</section>
 						<section>

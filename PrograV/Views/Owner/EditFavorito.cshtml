@@ -34,7 +34,7 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						@* <h1><a href="index.html" id="logo">Bienvenido @ViewBag.User.name</a></h1> *@
+						
 
 						<!-- Nav -->
 						<nav id="nav">
@@ -136,92 +136,7 @@
 						</section>
 
 
-					@* 	<section>
-							<div class="mt-4">
-								<form asp-action="SaveUpdateToFavorito" asp-controller="Owner" method="post">
-									<!-- Hidden ID Field -->
-									<input type="hidden" id="id" name="id" value="@Model.id" />
-
-									<!-- Nombre -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="nombre" class="form-label">Nombre del Visitante:</label>
-										</div>
-										<div class="col-9">
-											<input type="text" id="nombre" name="nombre" value="@Model.nombre" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Cedula -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="cedula" class="form-label">Cédula:</label>
-										</div>
-										<div class="col-9">
-											<input type="number" id="cedula" name="cedula" value="@Model.cedula" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Marca del Vehiculo -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="marcavehiculo" class="form-label">Marca del Vehículo:</label>
-										</div>
-										<div class="col-9">
-											<input type="text" id="marcavehiculo" name="marcavehiculo" value="@Model.marcavehiculo" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Modelo -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="modelo" class="form-label">Modelo:</label>
-										</div>
-										<div class="col-9">
-											<input type="text" id="modelo" name="modelo" value="@Model.modelo" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Color -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="color" class="form-label">Color:</label>
-										</div>
-										<div class="col-9">
-											<input type="text" id="color" name="color" value="@Model.color" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Placa -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="placa" class="form-label">Placa:</label>
-										</div>
-										<div class="col-9">
-											<input type="text" id="placa" name="placa" value="@Model.placa" class="form-control" required />
-										</div>
-									</div>
-
-									<!-- Fecha de Ingreso -->
-									<div class="row mb-3">
-										<div class="col-3">
-											<label for="fecha" class="form-label">Fecha de Ingreso:</label>
-										</div>
-										<div class="col-9">
-											<input type="datetime-local" id="fecha" name="fecha"
-												   value="@Model.fecha.ToString("yyyy-MM-ddTHH:mm")"
-												   class="form-control" required />
-										</div>
-									</div>
-
-
-
-									<button type="submit" class="btn btn-success mt-4">Guardar Cambios</button>
-									
-									<a asp-action="Viewvisit" asp-controller="Owner" asp-route-id="@Model.id" class="btn btn-secondary mt-4 ml-3">Regresar</a>
-								</form>
-							</div>
-						</section> *@
+					
 
 					</div>
 					

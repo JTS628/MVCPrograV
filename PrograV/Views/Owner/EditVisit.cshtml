@@ -34,7 +34,7 @@
 					<div class="col-12">
 
 						<!-- Logo -->
-						@* <h1><a href="index.html" id="logo">Bienvenido @ViewBag.User.name</a></h1> *@
+						
 
 						<!-- Nav -->
 						<nav id="nav">
@@ -139,54 +139,7 @@
 
 
 
-						@* <section>
-							<div class="mt-4">
-								<form asp-action="SaveUpdateToVisit" asp-controller="Owner" method="post">
-									<div class="mb-3">
-									
-										<input type="text" id="id" name="id" class="form-control" value="@Model.id" hidden />
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Nome del Visitante:</label>
-										<div class="col-sm-10">
-											<input type="text" name="nombre" value="@Model.nombre" class="form-control" required />
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Cedula:</label>
-										<div class="col-sm-10">
-											<input type="number" name="cedula" value="@Model.cedula" class="form-control" required />
-										</div>
-									</div><div class="form-group row">
-										<label class="col-sm-2 col-form-label">Marca del Vehiculo:</label>
-										<div class="col-sm-10">
-											<input type="text" name="marcavehiculo" value="@Model.marcavehiculo" class="form-control" required />
-										</div>
-									</div><div class="form-group row">
-										<label class="col-sm-2 col-form-label">Color:</label>
-										<div class="col-sm-10">
-											<input type="text" name="color" value="@Model.color" class="form-control" required />
-										</div>
-									</div><div class="form-group row">
-										<label class="col-sm-2 col-form-label">Placa:</label>
-										<div class="col-sm-10">
-											<input type="text" name="placa" value="@Model.placa" class="form-control" required />
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Fecha de ingreso:</label>
-										<div class="col-sm-10">
-											<input type="datetime" name="fecha" value="@Model.fecha" class="form-control" required />
-										</div>
-									</div>
-
-
-									<button type="submit" class="btn btn-success mt-4">Guardar Cambios</button>
-									
-									<a asp-action="Viewvisit" asp-controller="Owner" asp-route-id="@Model.id" class="btn btn-secondary mt-4 ml-3">Regresar</a>
-								</form>
-							</div>
-						</section> *@
+						
 
 					</div>
 					
