@@ -69,6 +69,7 @@ namespace PrograV.Models
                     new Dictionary<string, object>
                     {
                         //esto es un objeto json, por eso va entre parentesis
+                        
                         {"Name",condominium.Name },
                         {"Address",condominium.Address },
                         {"Count",condominium.Count },
@@ -118,7 +119,56 @@ namespace PrograV.Models
             return condominiumList;
         }
 
+        public static async Task<bool> UpdateCondotinfo(Condominium condominium)
+        {
+            try
+            {
+                DocumentReference docRef = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("condominium").Document(condominium.Id);
+                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+                if (snapshot.Exists)
+                {
+                    Dictionary<string, object> documentData = snapshot.ToDictionary();
 
+
+                    Dictionary<string, object> updates = new Dictionary<string, object>
+                    {
+
+                        {"Name", condominium.Name },
+                        {"Address",condominium.Address },
+                        {"Count",condominium.Count },
+                        {"Photo",condominium.Photo },
+                      
+                    };
+                    await docRef.UpdateAsync(updates);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+                Console.WriteLine($"Error updating records: {ex.Message}");
+            }
+            return false;
+        }
+
+        public static async Task<bool> RemoveCondo(string ID)
+        {
+            DocumentReference docRef = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("condominium").Document(ID);
+            DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+            if (snapshot.Exists)
+            {
+                await docRef.DeleteAsync();
+                Console.WriteLine("Document deleted successfully.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Document not found.");
+            }
+
+            return false;
+        }
 
 
     }

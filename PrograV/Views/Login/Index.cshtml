@@ -1,10 +1,11 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "Login Page";
 }
 
-<div class="text-center">
+
     <!DOCTYPE html>
     <html lang="es">
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +20,11 @@
                     <form method="post" asp-action="Login" asp-controller="Login" >
                         <div class="form-group">
                             <label for="username">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" value="jamcrests@gmail.com" required>
+                        <input type="text" class="form-control" id="email" name="email" value="admin@admin.com" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" value="Admin$1234" required>
+                        <input type="password" class="form-control" id="password" name="password" value="admin123" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                     </form>
@@ -31,6 +32,174 @@
             </div>
         </div>
     </body>
-</html>
+
+</html> *@
    
-</div>
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>One Column - Inicio de sesion</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="~/HTML5UP/assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="subpage">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<!-- Logo -->
+						<h1><a href="index.html" id="logo">Halcyonic</a></h1>
+
+						<!-- Nav -->
+						<nav id="nav">
+							<a href="index.html">Homepage</a>
+							<a href="threecolumn.html">Three Column</a>
+							<a href="twocolumn1.html">Two Column #1</a>
+							<a href="twocolumn2.html">Two Column #2</a>
+							<a asp-action="index" asp-controller="Welcome">LogOut</a>
+						</nav>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Content -->
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<!-- Main Content -->
+						<section>
+							<head>
+								<meta charset="UTF-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<title>@ViewData["Title"]</title>
+								<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+							</head>
+							<body>
+								
+								@if (!ViewData.ModelState.IsValid)
+								{
+									<div class="alert alert-danger d-flex align-items-center" role="alert">
+										<svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" role="img" aria-label="Danger:">
+											<path d="M8.982 1.566a1.13 1.13 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.707c.89 0 1.438-.99.982-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+										</svg>
+										<div>
+											@Html.ValidationSummary(false, "", new { @class = "mb-0" })
+										</div>
+									</div>
+								}
+
+								<div class="container">
+									<div class="row justify-content-center">
+										<div class="col-md-6">
+											<h2 class="text-center mt-5">@ViewData["Title"]</h2>
+											<form method="post" asp-action="Login" asp-controller="Login">
+												<div class="form-group">
+													<label for="username">Email</label>
+													<input type="text" class="form-control" id="email" name="email"  required>
+												</div>
+												<div class="form-group">
+													<label for="password">Password</label>
+													<input type="password" class="form-control" id="password" name="password"  required>
+												</div>
+												<button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</body>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-8 col-12-medium">
+
+						<!-- Links -->
+						<section>
+							<h2>Enlaces a cosas importantes</h2>
+							<div>
+								<div class="row">
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">No te olvides de Dapibus</a></li>
+											<li><a href="#">Sé constante en tus pasos</a></li>
+											<li><a href="#">Pausar es igual a pensar</a></li>
+											<li><a href="#">Explorar nuevas ideas</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">No te olvides de Dapibus</a></li>
+											<li><a href="#">Sé constante en tus pasos</a></li>
+											<li><a href="#">Pausar es igual a pensar</a></li>
+											<li><a href="#">Explorar nuevas ideas</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">No te olvides de Dapibus</a></li>
+											<li><a href="#">Sé constante en tus pasos</a></li>
+											<li><a href="#">Pausar es igual a pensar</a></li>
+											<li><a href="#">Explorar nuevas ideas</a></li>
+										</ul>
+									</div>
+									<div class="col-3 col-12-small">
+										<ul class="link-list last-child">
+											<li><a href="#">No te olvides de Dapibus</a></li>
+											<li><a href="#">Sé constante en tus pasos</a></li>
+											<li><a href="#">Pausar es igual a pensar</a></li>
+											<li><a href="#">Explorar nuevas ideas</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+					</div>
+					<div class="col-4 col-12-medium imp-medium">
+
+						<!-- Blurb -->
+						<section>
+							<h2>An Informative Text Blurb</h2>
+							<p>
+								No hay nadie como tú, pues eres único en tu esencia. Vive con intensidad, persigue tus sueños y deja que la vida fluya con armonía. Recuerda que cada desafío es una oportunidad para crecer y cada momento es un regalo que debes aprovechar.
+							</p>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="~/HTML5UP/assets/js/jquery.min.js"></script>
+	<script src="~/HTML5UP/assets/js/browser.min.js"></script>
+	<script src="~/HTML5UP/assets/js/breakpoints.min.js"></script>
+	<script src="~/HTML5UP/assets/js/util.js"></script>
+	<script src="~/HTML5UP/assets/js/main.js"></script>
+
+</body>
+</html>

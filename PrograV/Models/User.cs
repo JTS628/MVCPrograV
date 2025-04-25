@@ -24,28 +24,90 @@ namespace PrograV.Models
 
     }
 
+   
+
+
     public class UserHelper
     {
         public async Task<UserModel> getUser(string email)
         {
+         
+            var db = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId);
 
-            Query query = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("User").WhereEqualTo("email", email);
+            // 1. Check in "User" collection
+            Query query = db.Collection("User").WhereEqualTo("email", email);
             QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
 
-            Dictionary<string, object> data = querySnapshot.Documents[0].ToDictionary();
+            if (querySnapshot.Documents.Count > 0)
+            {
+                var data = querySnapshot.Documents[0].ToDictionary();
+                return new UserModel
+                {
+                    email = data["email"].ToString(),
+                    name = data["name"].ToString(),
+                    type = data["type"].ToString()
+                };
+            }
 
-            UserModel user = new UserModel
-            {   
+            // 2. If not found, check in "officer" collection
+            Query queryOfficer = db.Collection("officer").WhereEqualTo("email", email);
+            QuerySnapshot querySnapshotofficer = await queryOfficer.GetSnapshotAsync();
 
-                email = data["email"].ToString(),
-                name = data["name"].ToString(),
-                type = data["type"].ToString()
-                
-            };
+            if (querySnapshotofficer.Documents.Count > 0)
+            {
+                var dataOff = querySnapshotofficer.Documents[0].ToDictionary();
+                return new UserModel
+                {
+                    email = dataOff["email"].ToString(),
+                    name = dataOff["name"].ToString(),
+                    type = dataOff["type"].ToString()
+                };
+            }
 
-
-            return user;
+            // 3. Not found in either collection
+            return null;
         }
+
+
+
+            //Query query = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("User").WhereEqualTo("email", email);
+            //QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+            //Dictionary<string, object> data = querySnapshot.Documents[0].ToDictionary();
+
+            //UserModel user = new UserModel
+            //{   
+
+            //    email = data["email"].ToString(),
+            //    name = data["name"].ToString(),
+            //    type = data["type"].ToString()
+                
+            //};
+
+            //if (user == null)
+            //{
+
+            //    Query queryOfficer = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("officer").WhereEqualTo("email", email);
+            //    QuerySnapshot querySnapshotofficer = await queryOfficer.GetSnapshotAsync();
+
+            //    Dictionary<string, object> dataOff = querySnapshot.Documents[0].ToDictionary();
+
+            //    UserModel officer = new UserModel
+            //    {
+
+            //        email = dataOff["email"].ToString(),
+            //        name = dataOff["name"].ToString(),
+            //        type = dataOff["type"].ToString()
+
+            //    };
+
+            //    return officer;
+
+            //}
+
+
+            //return user };
+        
 
         public static async void postUserWithEmailAndPassword(UserModel userModel,CondoDetails condoDetails,string password)
         {
@@ -86,9 +148,9 @@ namespace PrograV.Models
 
             public static string GenerateRandomPassword(int length)
             {
-                if (length < 8)
+                if (length < 4)
                 {
-                    throw new ArgumentException("Password length should be at least 8 characters.");
+                    throw new ArgumentException("Password length should be at least 4 characters.");
                 }
 
                 var passwordBuilder = new StringBuilder();

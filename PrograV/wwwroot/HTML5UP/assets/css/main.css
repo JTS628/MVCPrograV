@@ -2020,5 +2020,17 @@ input, select, textarea {
 			#copyright {
 				padding: 20px 30px;
 			}
+		/* Prevent Halcyonic styles from leaking into .bootstrap-wrapper */
+			.bootstrap-wrapper {
+				all: initial;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			}
+
+			.bootstrap-wrapper * {
+				all: revert;
+			}
+
+		
+
 
 	}

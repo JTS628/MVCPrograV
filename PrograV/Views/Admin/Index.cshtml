@@ -53,8 +53,8 @@
 								<li>
 									<a asp-action="ManageOwner" asp-controller="Admin">Ver lista de usuarios</a>
 								</li>
-								<li><a href="#">Ver lista de guardas de seguridad</a></li>
-								@* <li><a href="#">Nascetur ridiculus</a></li> *@
+								<li><a asp-action ="ManageOfficer" asp-controller="Admin">Ver lista de guardas de seguridad</a></li>
+							
 							</ul>
 						</section>
 						<section>
@@ -65,14 +65,12 @@
 								<li>
 									<a asp-action="Create" asp-controller="Condo">Agregar Condominio</a>
 								<li>
-									<a asp-action="ManageOwner" asp-controller="Admin">Agregar propietario</a>
+									<a asp-action="Createowner" asp-controller="admin">Agregar propietario</a>
 								</li>
 								<li>
-									<a asp-action="" asp-controller="">Agregar Oficial de Seguridad</a>
+									<a asp-action ="Createofficer" asp-controller="admin">Agregar Oficial de Seguridad</a>
 								</li>
-								<@* li><a href="#">Penatibus et magnis</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li> *@
+								
 							</ul>
 						</section>
 					</div>

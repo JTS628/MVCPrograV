@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        p {
+            color: #424242;
+            font-size: 16px;
+        }
+
+        .qr-container {
+            margin: 20px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1565c0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+            .button:hover {
+                background-color: #0d47a1;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hola, {userName}!</h1>
+        <p>Tu visita ha sido programada.</p>
+        <p>Por favor, muestra el siguiente código al guarda de seguridad para acceder:</p>
+
+        <div class="qr-container">
+            <img src="{qrImageUrl}" alt="Código QR" width="200">
+        </div>
+
+        <a href="{link}" class="button">Más información</a>
+    </div>
+</body>
+</html>

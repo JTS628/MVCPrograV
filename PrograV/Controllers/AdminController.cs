@@ -47,7 +47,7 @@ namespace PrograV.Controllers
 
             string generatedPassword = UserHelper.PasswordGenerator.GenerateRandomPassword(10);
             
-           UserHelper.postUserWithEmailAndPassword(new UserModel
+            UserHelper.postUserWithEmailAndPassword(new UserModel
             {
                 email = txtemail,
                 name = txtname,
@@ -55,11 +55,14 @@ namespace PrograV.Controllers
                
 
             },new CondoDetails
-                { 
-                  condoname = txtcondo,
-                  houseID = inthouse,
+            { 
+                condoname = txtcondo,
+                houseID = inthouse,
 
-                }, generatedPassword);
+            }, generatedPassword);
+
+
+            TempData["SuccessMessage"] = "¡Propietario registrado exitosamente!";
 
 
             return RedirectToAction("Createowner", "admin");
@@ -84,7 +87,7 @@ namespace PrograV.Controllers
 
             }, generatedPassword);
 
-
+            TempData["SuccessMessage"] = "¡Official registrado exitosamente!";
             return RedirectToAction("Createofficer", "admin");
         }
 
@@ -113,6 +116,8 @@ namespace PrograV.Controllers
 
              await OwnerHelper.UpdateUserDetails(OwnerName, Email, CondoName, houseID, uuid);
 
+            TempData["SuccessMessage"] = "¡Propietario actulizado exitosamente!";
+
             return RedirectToAction("ManageOwner","Admin");
         }
 
@@ -121,6 +126,7 @@ namespace PrograV.Controllers
 
             await OfficerHelper.UpdateOfficerDetails(officerName, email, condo, uuid);
 
+            TempData["SuccessMessage"] = "¡Official actualizado exitosamente!";
             return RedirectToAction("ManageOfficer", "Admin");
 
         }
@@ -157,7 +163,11 @@ namespace PrograV.Controllers
         {
           var owner = await OwnerHelper.SearchOwnerByEmail(email);
 
-            //ViewBag.uuid = uuid;
+            CondominiumHelper condominiumHelper = new CondominiumHelper();
+
+            List<Condominium> listacondominiums = condominiumHelper.getCondominiums().Result;
+
+            ViewBag.listaCondo = listacondominiums;
 
             return View(owner);
         }
@@ -192,17 +202,22 @@ namespace PrograV.Controllers
         }
 
         // GET: AdminController/Delete/5
-        public ActionResult Delete(string Name, string Email, string CondoName, int houseID, string uuid)
+        public async Task<ActionResult> Delete(string Name, string Email, string CondoName, int houseID, string uuid)
         {
 
             try
             {
-               OwnerHelper.RemoveProperty(Name,Email,CondoName,houseID,uuid) ;
+               
+                var result = await OwnerHelper.RemoveProperty(Name,Email,CondoName,houseID,uuid) ;
 
-               //OwnerHelper.RemoveOwnerIfnoproperties(Email);
+             
+               if (result)
+               {
+                    TempData["SuccessMessage"] = "¡Record eliminado exitosamente!";
+                    return RedirectToAction("ManageOwner", "admin"); 
+               }
 
-
-                return RedirectToAction("ManageOwner", "admin");
+                return RedirectToAction("Index", "Error");
             }
             catch
             {
@@ -218,6 +233,7 @@ namespace PrograV.Controllers
             {
                await OfficerHelper.RemoveOfficer(Email, uuid);
 
+                TempData["SuccessMessage"] = "¡Oficial eliminado exitosamente!";
                 return RedirectToAction("ManageOfficer", "admin");
             }
             catch
@@ -245,8 +261,9 @@ namespace PrograV.Controllers
         public async Task<ActionResult> SaveNewProperty(string OwnerName, string Email, string condoname, int houseID, string uuid)
         {
 
-           await OwnerHelper.AddNewProperty(OwnerName, Email, condoname, houseID, uuid);
+            await OwnerHelper.AddNewProperty(OwnerName, Email, condoname, houseID, uuid);
 
+            TempData["SuccessMessage"] = "¡Nueva propiedad agregada exitosamente!";
             return RedirectToAction("ManageOwner", "Admin");
         }
 

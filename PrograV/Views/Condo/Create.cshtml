@@ -6,6 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="/HTML5UP/assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="subpage">
 	<div id="page-wrapper">
@@ -71,9 +72,10 @@
 												
 											</div>
 											<button type="submit" class="btn btn-primary">Crear</button>
+											@* <a asp-action="Index" asp-controller="Condo" class="d-flex justify-content-end">Volver</a> *@
 										</form>
 										<div>
-										<form method="get" asp-action="Index" asp-controller="Admin">
+											<form method="get" asp-action="Index" asp-controller="Condo" class="d-flex justify-content-end">
 											<button type="submit" class="btn btn-primary">Volver</button>
 										</form>
 										</div>

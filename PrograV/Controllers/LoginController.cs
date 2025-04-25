@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PrograV.Firebase;
+using PrograV.Miselanius;
 using PrograV.Models;
 
 namespace PrograV.Controllers
@@ -19,10 +20,19 @@ namespace PrograV.Controllers
         {
             try
             {
+                
+
                 UserHelper userHelper = new UserHelper();
 
                 UserCredential userCredential = await FirebaseAuthHelper.setFirebaseAuthClient().SignInWithEmailAndPasswordAsync(email, password);
                 UserModel user = await userHelper.getUser(email);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Usuario o Contraseña incorrectos");
+                    //TempData["SuccessMessage"] = "Usuario o Contraseña incorrectos"; 
+                    return View(); // Return to the Login view
+                }
 
                 HttpContext.Session.SetString("userSession",JsonConvert.SerializeObject(user));
 
@@ -44,9 +54,10 @@ namespace PrograV.Controllers
                 return RedirectToAction("Error", "home");
 
             }
-            catch
-            { 
-            return RedirectToAction ("Error","home");
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Usuario o Contraseña incorrectos");
+                return View("Index");
             }
         }
 

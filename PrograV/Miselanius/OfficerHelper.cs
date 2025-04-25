@@ -8,9 +8,9 @@ namespace PrograV.Miselanius
     public class OfficerHelper
     {
 
-        public static async Task<List<Officer.OfficerModel>> SearchOfficers()
+        public static async Task<List<Security.OfficerModel>> SearchOfficers()
         {
-            List<Officer.OfficerModel> officerList = new List<Officer.OfficerModel>();
+            List<Security.OfficerModel> officerList = new List<Security.OfficerModel>();
 
             Query query = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId).Collection("officer").WhereEqualTo("type", "officer");
             QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
@@ -20,7 +20,7 @@ namespace PrograV.Miselanius
             {
                 Dictionary<string, object> data = item.ToDictionary();
 
-                officerList.Add(new Officer.OfficerModel
+                officerList.Add(new Security.OfficerModel
                 {
                     uuid = item.Id,
                     name = data["name"].ToString(),
@@ -37,9 +37,9 @@ namespace PrograV.Miselanius
         }
 
 
-        public static async Task<Officer.OfficerModel> SearchOfficerByEmail(string email)
+        public static async Task<Security.OfficerModel> SearchOfficerByEmail(string email)
         {
-            Officer.OfficerModel officer = null;
+            Security.OfficerModel officer = null;
 
             // Create a query to find a document with the specified email
             Query query = FirestoreDb.Create(FirebaseAuthHelper.firebaseAppId)
@@ -72,7 +72,7 @@ namespace PrograV.Miselanius
                 //}
 
                 // Populate the owner object with the retrieved data
-                officer = new Officer.OfficerModel
+                officer = new Security.OfficerModel
                 {
                     uuid = item.Id,
                     email = data["email"].ToString(),
@@ -98,7 +98,7 @@ namespace PrograV.Miselanius
                  
                     Dictionary<string, object> updates = new Dictionary<string, object>
                     {
-                        
+                        { "name", ownerName },
                         { "condo", condoName }
                     };
                     await docRef.UpdateAsync(updates);
@@ -168,6 +168,9 @@ namespace PrograV.Miselanius
             }
 
         }
+
+
+
 
 
 

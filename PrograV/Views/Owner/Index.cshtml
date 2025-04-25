@@ -21,11 +21,11 @@
 
 						<!-- Nav -->
 						<nav id="nav">
-							<a href="index.html">Homepage</a>
-							<a href="threecolumn.html">Three Column</a>
-							<a href="twocolumn1.html">Two Column #1</a>
-							<a href="twocolumn2.html">Two Column #2</a>
-							<a href="onecolumn.html">One Column</a>
+							<a asp-action="index" asp-controller="Owner">Homepage</a>
+							<a asp-action="CreateVisit" asp-controller="Owner">Crear Visitas</a>
+							<a asp-action="CreateFavorito" asp-controller="Owner">Mis Favoritos</a>
+							<a asp-action="CreateQuickDelivery" asp-controller="Owner">Qucik Delivery</a>
+							<a asp-action="index" asp-controller="Welcome">LogOut</a>
 						</nav>
 
 					</div>
@@ -40,35 +40,44 @@
 					<div class="col-9 col-12-medium">
 
 						<!-- Main Content -->
+
 						<section>
 							<header>
 								<h2>Mis condominios</h2>
 								<h3>Muestra la lista de condominios a nombre del propietario</h3>
 							</header>
 							<div class="container">
-								@* <a class="btn btn-primary asp-area" asp-controller="Condo" asp-action="Create"> "Add condominium" </a> *@
 								<div class="row justify-content-center">
 									@foreach (var condominium in ViewBag.Condominium)
 									{
 										<div class="card shadow-lg p-4">
 											<div class="row align-items-center">
 												<div class="col-md-4">
-													<img src="@condominium.Photo" class="img-fluid">
+													<img src="@condominium.Photo" class="img-fluid rounded" style="max-width: 100%; max-height: 200px; object-fit: cover;">
 												</div>
 												<div class="col-md-8">
-													<h2 class="text-center mt-5">@condominium.Name</h2>
-													<h2 class="text-center mt-5">@condominium.Count</h2>
-													<h2 class="text-center mt-5">@condominium.Address</h2>
+													
+														<div class="d-flex align-items-center">
+															
+															<h2 class="mb-0" id="condo"><b>Condominio</b> @condominium.Name</h2>
+														</div>
+																										
+														<div class="d-flex align-items-center">
+															
+															<h2 class="mb-0" id="houseid">Tu Casa: @condominium.Count</h2>
+														</div>
+													
+													@* <h2 class="text-center mt-5">@condominium.Address</h2> *@
 												</div>
 											</div>
 										</div>
-
 									}
 								</div>
-								@* <a class="btn btn-primary asp-area" asp-controller="Condo" asp-action="Create"> Add condominium </a>
-								<a class="btn btn-primary asp-area" asp-controller="Admin" asp-action="Index"> Volver </a> *@
 							</div>
 						</section>
+
+
+					
 
 					</div>
 					<div class="col-3 col-12-medium">
@@ -76,34 +85,51 @@
 						<!-- Sidebar -->
 						<section>
 							<header>
-								<h2>Acciones permitidas al dueño</h2>
+								<h2>Visitas!!</h2>
 							</header>
 							<ul class="link-list">
-								<li>
-									<a asp-action="CreateVisit" asp-controller="Owner">Crear Visitas</a>
-								</li>
+								<li><a asp-action="CreateVisit" asp-controller="Owner">Crear Visitas</a></li>
 								<li><a asp-action="ViewVisit" asp-controller="Owner">Gestionar visitas</a></li>
-								<li><a href="#">Nec sociis natoque</a></li>
-								<li><a href="#">Penatibus et magnis</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li>
 							</ul>
 						</section>
 						<section>
 							<header>
-								<h2>Ipsum Dolor</h2>
+								<h2>Favoritos</h2>
 							</header>
 							<p>
-								Vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam
-								iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat.
+								Crea tu lista de personas favoritas
 							</p>
 							<ul class="link-list">
-								<li><a href="#">Sed dolore viverra</a></li>
-								<li><a href="#">Ligula non varius</a></li>
-								<li><a href="#">Dis parturient montes</a></li>
-								<li><a href="#">Nascetur ridiculus</a></li>
+								<li><a asp-action="CreateFavorito" asp-controller="Owner">Mis Favoritos</a></li>
+								<li><a asp-action="ViewFavorito" asp-controller="Owner">Gestionar Mis Favoritos</a></li>
+								
 							</ul>
 						</section>
+
+						<section>
+							<header>
+								<h2>Quick Delivery!</h2>
+							</header>
+							<p>
+								Da permiso a entregas rapidas!
+							</p>
+							<ul class="link-list">
+								<li><a asp-action="CreateQuickDelivery" asp-controller="Owner">Quick Delivery</a></li>
+							</ul>
+						</section>
+						<section>
+							<header>
+								<h2>Mis Vehiculos</h2>
+							</header>
+							<p>
+								Registra tus vehiculos.
+							</p>
+							<ul class="link-list">
+								<li><a asp-action="ViewMisVehiculos" asp-controller="Owner">Mis Vehiculos</a></li>
+							</ul>
+						</section>
+
+
 
 					</div>
 				</div>
